@@ -8,16 +8,17 @@ def home():
 
 @app.route('/revisao')
 def revisao():
-    return '''
-<h1>Funcionou?</h1>
-<p>Sim, funcionou</p>
-<p style="color: red;">Ebaaa!</p>
-'''
+    nome = 'Ingrid'
+    return render_template('variaveis.html', idade=28, nome=nome)
+
 
 @app.route('/revisao/<nome>/<int:idade>')
 def parametros(nome,idade):
-    ano_nascimento = 2026 - idade
-    return 'Olá {nome}, você tem {idade} anos, porque nasceu em {ano_nascimento}.'
+    return render_template('variaveis.hmtl', idade=idade, nome=nome)
+
+@app.route('/produtos/cadastrar')
+def cadastrar_produtos():
+    return render_template('produtos/form-produto.html')
 
 
 
